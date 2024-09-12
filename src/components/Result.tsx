@@ -1,4 +1,5 @@
 import { IResultProps } from "../types/types";
+import { formatValue } from "../lib/utils";
 import "../css/result.css";
 
 export const Result = ({ result, selectedPlan }: IResultProps) => {
@@ -32,10 +33,16 @@ export const Result = ({ result, selectedPlan }: IResultProps) => {
 
       <article className="card">
         <p>Your monthly repayments</p>
-        <h4>£{monthlyPayment}</h4>
+        <h4>{formatValue(monthlyPayment.toFixed(2))}</h4>
         <span></span>
         <p>Total you'll repay over the term</p>
-        <h5>£{selectedPlan === "repayment" ? totalRepayment : interestOnly}</h5>
+        <h5>
+          {formatValue(
+            selectedPlan === "repayment"
+              ? totalRepayment.toFixed(2)
+              : interestOnly.toFixed(2)
+          )}
+        </h5>
       </article>
     </section>
   );

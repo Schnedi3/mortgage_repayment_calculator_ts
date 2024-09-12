@@ -1,4 +1,4 @@
-const locale = navigator.language;
+export const locale = navigator.language;
 const currency = "EUR";
 
 export const getCurrencySymbol = () => {
@@ -33,4 +33,14 @@ export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   ) {
     e.preventDefault();
   }
+};
+
+export const formatValue = (value: string) => {
+  const resValue = parseFloat(value);
+
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 2,
+  }).format(resValue);
 };

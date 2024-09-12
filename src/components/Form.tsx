@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { IFormProps, IMortgage, IMortgageDefault } from "../types/types";
 import { mortgageSchema } from "../schemas/mortgageSchema";
-import { getCurrencySymbol, handleKeyDown } from "../lib/utils";
+import { getCurrencySymbol, handleKeyDown, locale } from "../lib/utils";
 import iconCalc from "../assets/icon-calculator.svg";
 
 import "../css/form.css";
@@ -56,6 +56,15 @@ export const Form = ({
             className={errors.amount ? "input_error" : ""}
             {...register("amount")}
             onKeyDown={handleKeyDown}
+            onChange={(e) => {
+              const value = e.target.value.replace(/[^0-9.]/g, "");
+              const numberValue = parseInt(value);
+              if (!isNaN(numberValue)) {
+                e.target.value = new Intl.NumberFormat(locale).format(
+                  numberValue
+                );
+              }
+            }}
           />
           <p>{currencySymbol}</p>
         </article>
