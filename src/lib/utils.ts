@@ -15,3 +15,22 @@ export const getCurrencySymbol = () => {
       .trim();
   }
 };
+
+export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const key = e.key;
+  const value = e.currentTarget.value;
+
+  if (
+    !/[0-9.,]/.test(key) &&
+    !["Backspace", "Tab", "ArrowLeft", "ArrowRight", "Delete"].includes(key)
+  ) {
+    e.preventDefault();
+  }
+
+  if (
+    (key === "." || key === ",") &&
+    (value.includes(".") || value.includes(",") || value === "")
+  ) {
+    e.preventDefault();
+  }
+};
