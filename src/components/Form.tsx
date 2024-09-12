@@ -5,6 +5,8 @@ import { IFormProps, IMortgage, IMortgageDefault } from "../types/types";
 import { mortgageSchema } from "../schemas/mortgageSchema";
 import iconCalc from "../assets/icon-calculator.svg";
 
+import "../css/form.css";
+
 export const Form = ({
   setResult,
   selectedPlan,
@@ -31,69 +33,83 @@ export const Form = ({
   };
 
   return (
-    <section>
-      <h1>Mortgage Calculator</h1>
-      <button onClick={handleClear}>Clear All</button>
+    <section className="form_container">
+      <figure className="white_bg"></figure>
+      <article className="header">
+        <h1>Mortgage Calculator</h1>
+        <button onClick={handleClear}>Clear All</button>
+      </article>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <article>
-          <label htmlFor="amount">Mortgage Amount</label>
-          <i>£</i>
+      <form
+        className="form"
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+      >
+        <article className="amount">
+          <h2>Mortgage Amount</h2>
           <input
             type="number"
             id="amount"
+            className={errors.amount ? "input_error" : ""}
             {...register("amount", { valueAsNumber: true })}
           />
+          <p>£</p>
         </article>
 
-        <article>
-          <div>
-            <label htmlFor="term">Mortgage Term</label>
+        <article className="term_rate">
+          <div className="term">
+            <h2>Mortgage Term</h2>
             <input
               type="number"
               id="term"
+              className={errors.term ? "input_error" : ""}
               {...register("term", { valueAsNumber: true })}
             />
             <p>years</p>
           </div>
-          <div>
-            <label htmlFor="rate">Interest Rate</label>
+          <div className="rate">
+            <h2>Interest Rate</h2>
             <input
               type="number"
               id="rate"
+              className={errors.rate ? "input_error" : ""}
               {...register("rate", { valueAsNumber: true })}
             />
             <p>%</p>
           </div>
         </article>
 
-        <article>
+        <article className="repayment_interest">
           <h2>Mortgage type</h2>
           <div>
-            <input
-              type="radio"
-              id="repayment"
-              value="repayment"
-              checked={selectedPlan === "repayment"}
-              {...register("plan", {
-                required: true,
-                onChange: (e) => setSelectedPlan(e.target.value),
-              })}
-            />
-            <label htmlFor="repayment">Repayment</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="interest"
-              value="interest"
-              checked={selectedPlan === "interest"}
-              {...register("plan", {
-                required: "Please select a mortgage type",
-                onChange: (e) => setSelectedPlan(e.target.value),
-              })}
-            />
-            <label htmlFor="interest">Interest Only</label>
+            <label className={`repayment${errors.plan ? " input_error" : ""}`}>
+              <input
+                type="radio"
+                id="repayment"
+                className={`radio${errors.plan ? " input_error" : ""}`}
+                value="repayment"
+                checked={selectedPlan === "repayment"}
+                {...register("plan", {
+                  required: true,
+                  onChange: (e) => setSelectedPlan(e.target.value),
+                })}
+              />
+              Repayment
+            </label>
+            <label className={`interest${errors.plan ? " input_error" : ""}`}>
+              <input
+                type="radio"
+                id="interest"
+                className={`radio${errors.plan ? " input_error" : ""}`}
+                value="interest"
+                checked={selectedPlan === "interest"}
+                {...register("plan", {
+                  required: true,
+                  onChange: (e) => setSelectedPlan(e.target.value),
+                })}
+              />
+              Interest Only
+            </label>
           </div>
         </article>
 

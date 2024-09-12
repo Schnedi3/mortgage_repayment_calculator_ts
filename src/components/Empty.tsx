@@ -1,8 +1,9 @@
 import iconEmpty from "../assets/empty.svg";
+import "../css/empty.css";
 
 export const Empty = () => {
   return (
-    <section>
+    <section className="empty_container">
       <img src={iconEmpty} />
       <h3>Results shown here</h3>
       <p>

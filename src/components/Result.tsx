@@ -1,4 +1,5 @@
 import { IResultProps } from "../types/types";
+import "../css/result.css";
 
 export const Result = ({ result, selectedPlan }: IResultProps) => {
   const { amount, term, rate } = result;
@@ -19,8 +20,8 @@ export const Result = ({ result, selectedPlan }: IResultProps) => {
   const interestOnly = totalRepayment - P;
 
   return (
-    <section>
-      <article>
+    <section className="result_container">
+      <article className="summary">
         <h3>Your results</h3>
         <p>
           Your results are shown below based on the information you provided. To
@@ -29,7 +30,7 @@ export const Result = ({ result, selectedPlan }: IResultProps) => {
         </p>
       </article>
 
-      <article>
+      <article className="card">
         <p>Your monthly repayments</p>
         <h4>£{monthlyPayment}</h4>
         <span></span>
