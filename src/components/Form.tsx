@@ -50,47 +50,50 @@ export const Form = ({
       >
         <article className="amount">
           <h2>Mortgage Amount</h2>
-          <input
-            type="text"
-            id="amount"
-            className={errors.amount ? "input_error" : ""}
-            {...register("amount")}
-            onKeyDown={handleKeyDown}
-            onChange={(e) => {
-              const value = e.target.value.replace(/[^0-9.]/g, "");
-              const numberValue = parseInt(value);
-              if (!isNaN(numberValue)) {
-                e.target.value = new Intl.NumberFormat(locale).format(
-                  numberValue
-                );
-              }
-            }}
-          />
-          <p>{currencySymbol}</p>
+          <div className={`amount_input${errors.amount ? " input_error" : ""}`}>
+            <p>{currencySymbol}</p>
+            <input
+              type="text"
+              id="amount"
+              {...register("amount")}
+              onKeyDown={handleKeyDown}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9.]/g, "");
+                const numberValue = parseInt(value);
+                if (!isNaN(numberValue)) {
+                  e.target.value = new Intl.NumberFormat(locale).format(
+                    numberValue
+                  );
+                }
+              }}
+            />
+          </div>
         </article>
 
         <article className="term_rate">
           <div className="term">
             <h2>Mortgage Term</h2>
-            <input
-              type="text"
-              id="term"
-              className={errors.term ? "input_error" : ""}
-              {...register("term", { valueAsNumber: true })}
-              onKeyDown={handleKeyDown}
-            />
-            <p>years</p>
+            <div className={`term_input${errors.term ? " input_error" : ""}`}>
+              <input
+                type="text"
+                id="term"
+                {...register("term", { valueAsNumber: true })}
+                onKeyDown={handleKeyDown}
+              />
+              <p>years</p>
+            </div>
           </div>
           <div className="rate">
             <h2>Interest Rate</h2>
-            <input
-              type="text"
-              id="rate"
-              className={errors.rate ? "input_error" : ""}
-              {...register("rate", { valueAsNumber: true })}
-              onKeyDown={handleKeyDown}
-            />
-            <p>%</p>
+            <div className={`rate_input${errors.rate ? " input_error" : ""}`}>
+              <input
+                type="text"
+                id="rate"
+                {...register("rate", { valueAsNumber: true })}
+                onKeyDown={handleKeyDown}
+              />
+              <p>%</p>
+            </div>
           </div>
         </article>
 

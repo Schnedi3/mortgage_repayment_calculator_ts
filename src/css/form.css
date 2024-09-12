@@ -2,7 +2,7 @@
 .form_container {
   position: relative;
   width: 50%;
-  height: 80%;
+  height: 37.5rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -24,8 +24,7 @@
 
 .header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  place-content: center space-between;
 }
 
 .header > h1 {
@@ -39,28 +38,12 @@
   background-color: transparent;
 }
 
-input[type="text"] {
-  appearance: none;
-  -moz-appearance: textfield;
-  font-weight: 900;
-  font-size: 1.1rem;
-  border: 2px solid var(--slate-500);
-  border-radius: 0.5rem;
-  background-color: transparent;
-  z-index: 1;
-  transition: 0.3s;
-}
-
-input[type="text"]:focus-visible {
-  outline: 0;
-}
-
 .form > article {
   margin-bottom: 2rem;
 }
 
+/* AMOUNT */
 .amount {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
@@ -72,67 +55,81 @@ h2 {
   color: var(--slate-700);
 }
 
-.amount > p {
-  position: absolute;
-  top: 2rem;
+.amount_input {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--slate-900);
-  padding: 0.95rem;
-  border-radius: 0.5rem 0 0 0.5rem;
-  background-color: var(--slate-100);
-  z-index: 0;
+  gap: 1rem;
+  border: 2px solid var(--slate-500);
+  border-radius: 0.5rem;
   transition: 0.3s;
 }
 
-.amount > input {
-  position: relative;
-  padding: 0.9rem 0 0.9rem 4rem;
+.amount_input > p {
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 0.4rem 0 0 0.4rem;
+  background-color: var(--slate-100);
+  transition: 0.3s;
 }
 
+.amount_input > input {
+  width: 100%;
+  font-weight: 900;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 0;
+}
+
+.amount_input > input:focus-visible,
+.term_input > input:focus-visible,
+.rate_input > input:focus-visible {
+  outline: 0;
+}
+
+/* TERM - RATE */
 .term_rate {
-  position: relative;
   display: flex;
   gap: 1rem;
 }
 
 .term,
 .rate {
-  width: 100%;
-  position: relative;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
 
-.term > input,
-.rate > input {
-  width: 100%;
-  position: relative;
-  padding: 1rem;
-  z-index: 1;
-}
-
-.term > p,
-.rate > p {
-  position: absolute;
-  top: 2rem;
-  right: 0;
+.term_input,
+.rate_input {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  color: var(--slate-900);
-  padding: 1.1rem 1rem;
-  border-radius: 0 0.5rem 0.5rem 0;
-  background-color: var(--slate-100);
-  z-index: 0;
+  border: 2px solid var(--slate-500);
+  border-radius: 0.5rem;
   transition: 0.3s;
 }
 
+.term_input > input,
+.rate_input > input {
+  width: 100%;
+  padding-left: 1rem;
+  font-weight: 900;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 0;
+}
+
+.term_input > p,
+.rate_input > p {
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--slate-900);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background-color: var(--slate-100);
+  transition: 0.3s;
+}
+
+/* REPAYMENT */
 .repayment_interest {
   display: flex;
   flex-direction: column;
@@ -187,8 +184,7 @@ h2 {
   width: 100%;
   padding: 1rem 2rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  place-content: center center;
   gap: 1rem;
   font-weight: 700;
   font-size: 1.1rem;
@@ -203,17 +199,13 @@ h2 {
 }
 
 /* ERROR */
-input[type="text"].input_error {
-  border: 2px solid var(--red);
-}
-
-input[type="text"].input_error + p {
-  color: var(--white);
-  background-color: var(--red);
-}
-
 .input_error {
   border: 2px solid var(--red);
+}
+
+.input_error > p {
+  color: var(--white);
+  background-color: var(--red);
 }
 
 /* HOVER */
@@ -223,17 +215,32 @@ input[type="text"].input_error + p {
     cursor: pointer;
   }
 
-  input[type="text"]:hover {
+  .amount_input:hover,
+  .term_input:hover,
+  .rate_input:hover {
     border: 2px solid var(--lime);
     cursor: pointer;
   }
 
-  input[type="text"]:hover ~ p {
+  .amount_input > input:hover,
+  .term_input > input:hover,
+  .rate_input > input:hover {
+    cursor: pointer;
+  }
+
+  .amount_input:hover > p,
+  .term_input:hover > p,
+  .rate_input:hover > p {
     background-color: var(--lime);
   }
 
-  input[type="text"]:hover.input_error + p {
+  .input_error:hover {
+    border: 2px solid var(--lime);
+  }
+
+  .input_error:hover > p {
     color: var(--slate-900);
+    background-color: var(--lime);
   }
 
   .repayment:hover,
@@ -249,7 +256,7 @@ input[type="text"].input_error + p {
   }
 
   .form > button:hover {
-    background-color: var(--lime-pale);
+    background-color: var(--green);
     cursor: pointer;
   }
 }
