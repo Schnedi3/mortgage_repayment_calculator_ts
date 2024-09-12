@@ -9,9 +9,8 @@ This is a solution to the [Mortgage repayment calculator challenge on Frontend M
 - See hover and focus states for all interactive elements on the page
 
 ## Screenshots
-<!-- <img src="./screenshots/desktop_design.jpg">
-<img src="./screenshots/tablet_design.jpg">
-<img src="./screenshots/mobile_design.jpg"> -->
+<img src="./screenshots/desktop_design.jpg">
+<img src="./screenshots/mobile_design.jpg">
 
 ## Built with
 - React
