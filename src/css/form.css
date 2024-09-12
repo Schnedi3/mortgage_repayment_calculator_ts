@@ -100,6 +100,7 @@ h2 {
 
 .term,
 .rate {
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -249,5 +250,22 @@ input[type="number"].input_error + p {
   .form > button:hover {
     background-color: var(--lime-pale);
     cursor: pointer;
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 900px) {
+  .form_container {
+    width: 100%;
+    border-radius: 0;
+    background-color: var(--white);
+  }
+
+  .white_bg {
+    display: none;
+  }
+
+  .header > button {
+    text-decoration: underline;
   }
 }

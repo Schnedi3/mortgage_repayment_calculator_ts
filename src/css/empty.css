@@ -22,3 +22,11 @@
   font-size: 0.9rem;
   color: var(--slate-300);
 }
+
+/* ADAPTIVE */
+@media (max-width: 900px) {
+  .empty_container {
+    width: 100%;
+    border-radius: 0;
+  }
+}
