@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { IFormProps, IMortgage, IMortgageDefault } from "../types/types";
 import { mortgageSchema } from "../schemas/mortgageSchema";
+import { getCurrencySymbol } from "../lib/utils";
 import iconCalc from "../assets/icon-calculator.svg";
 
 import "../css/form.css";
@@ -32,6 +33,8 @@ export const Form = ({
     setSelectedPlan("");
   };
 
+  const currencySymbol = getCurrencySymbol();
+
   return (
     <section className="form_container">
       <figure className="white_bg"></figure>
@@ -53,7 +56,7 @@ export const Form = ({
             className={errors.amount ? "input_error" : ""}
             {...register("amount")}
           />
-          <p>£</p>
+          <p>{currencySymbol}</p>
         </article>
 
         <article className="term_rate">
