@@ -48,10 +48,10 @@ export const Form = ({
         <article className="amount">
           <h2>Mortgage Amount</h2>
           <input
-            type="number"
+            type="text"
             id="amount"
             className={errors.amount ? "input_error" : ""}
-            {...register("amount", { valueAsNumber: true })}
+            {...register("amount")}
           />
           <p>£</p>
         </article>
@@ -60,7 +60,7 @@ export const Form = ({
           <div className="term">
             <h2>Mortgage Term</h2>
             <input
-              type="number"
+              type="text"
               id="term"
               className={errors.term ? "input_error" : ""}
               {...register("term", { valueAsNumber: true })}
@@ -70,7 +70,7 @@ export const Form = ({
           <div className="rate">
             <h2>Interest Rate</h2>
             <input
-              type="number"
+              type="text"
               id="rate"
               className={errors.rate ? "input_error" : ""}
               {...register("rate", { valueAsNumber: true })}

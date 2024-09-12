@@ -39,7 +39,7 @@
   background-color: transparent;
 }
 
-input[type="number"] {
+input[type="text"] {
   appearance: none;
   -moz-appearance: textfield;
   font-weight: 900;
@@ -51,7 +51,7 @@ input[type="number"] {
   transition: 0.3s;
 }
 
-input[type="number"]:focus-visible {
+input[type="text"]:focus-visible {
   outline: 0;
 }
 
@@ -79,8 +79,9 @@ h2 {
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  font-size: 1.2rem;
   color: var(--slate-900);
-  padding: 1.05rem;
+  padding: 0.95rem;
   border-radius: 0.5rem 0 0 0.5rem;
   background-color: var(--slate-100);
   z-index: 0;
@@ -202,11 +203,11 @@ h2 {
 }
 
 /* ERROR */
-input[type="number"].input_error {
+input[type="text"].input_error {
   border: 2px solid var(--red);
 }
 
-input[type="number"].input_error + p {
+input[type="text"].input_error + p {
   color: var(--white);
   background-color: var(--red);
 }
@@ -222,16 +223,16 @@ input[type="number"].input_error + p {
     cursor: pointer;
   }
 
-  input[type="number"]:hover {
+  input[type="text"]:hover {
     border: 2px solid var(--lime);
     cursor: pointer;
   }
 
-  input[type="number"]:hover ~ p {
+  input[type="text"]:hover ~ p {
     background-color: var(--lime);
   }
 
-  input[type="number"]:hover.input_error + p {
+  input[type="text"]:hover.input_error + p {
     color: var(--slate-900);
   }
 
