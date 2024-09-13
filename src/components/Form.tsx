@@ -132,7 +132,7 @@ export const Form = ({
         </article>
 
         <button type="submit">
-          <img src={iconCalc} /> Calculate Repayments
+          <img src={iconCalc} alt="calculator icon" /> Calculate Repayments
         </button>
       </form>
     </section>
