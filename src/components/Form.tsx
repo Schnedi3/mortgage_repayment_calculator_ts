@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import data from "../data.json";
 import { IFormProps, IMortgage, IMortgageDefault } from "../types/types";
 import { mortgageSchema } from "../schemas/mortgageSchema";
 import { getCurrencySymbol, handleKeyDown, locale } from "../lib/utils";
@@ -13,6 +14,8 @@ export const Form = ({
   selectedPlan,
   setSelectedPlan,
 }: IFormProps) => {
+  const { title, clear, amount, term, rate, type, repay, interest, calculate } =
+    data;
   const {
     register,
     handleSubmit,
@@ -39,8 +42,8 @@ export const Form = ({
     <section className="form_container">
       <figure className="white_bg"></figure>
       <article className="header">
-        <h1>Mortgage Calculator</h1>
-        <button onClick={handleClear}>Clear All</button>
+        <h1>{title}</h1>
+        <button onClick={handleClear}>{clear}</button>
       </article>
 
       <form
@@ -49,7 +52,7 @@ export const Form = ({
         autoComplete="off"
       >
         <article className="amount">
-          <label htmlFor="amount">Mortgage Amount</label>
+          <label htmlFor="amount">{amount}</label>
           <div className={`amount_input${errors.amount ? " input_error" : ""}`}>
             <p>{currencySymbol}</p>
             <input
@@ -59,10 +62,10 @@ export const Form = ({
               onKeyDown={handleKeyDown}
               onChange={(e) => {
                 const value = e.target.value.replace(/[^0-9.]/g, "");
-                const numberValue = parseInt(value);
-                if (!isNaN(numberValue)) {
+                const parsedValue = parseInt(value);
+                if (!isNaN(parsedValue)) {
                   e.target.value = new Intl.NumberFormat(locale).format(
-                    numberValue
+                    parsedValue
                   );
                 }
               }}
@@ -72,7 +75,7 @@ export const Form = ({
 
         <article className="term_rate">
           <div className="term">
-            <label htmlFor="term">Mortgage Term</label>
+            <label htmlFor="term">{term}</label>
             <div className={`term_input${errors.term ? " input_error" : ""}`}>
               <input
                 type="text"
@@ -84,7 +87,7 @@ export const Form = ({
             </div>
           </div>
           <div className="rate">
-            <label htmlFor="rate">Interest Rate</label>
+            <label htmlFor="rate">{rate}</label>
             <div className={`rate_input${errors.rate ? " input_error" : ""}`}>
               <input
                 type="text"
@@ -98,7 +101,7 @@ export const Form = ({
         </article>
 
         <article className="repayment_interest">
-          <h2>Mortgage type</h2>
+          <h2>{type}</h2>
           <div>
             <label className={`repayment${errors.plan ? " input_error" : ""}`}>
               <input
@@ -112,7 +115,7 @@ export const Form = ({
                   onChange: (e) => setSelectedPlan(e.target.value),
                 })}
               />
-              Repayment
+              {repay}
             </label>
             <label className={`interest${errors.plan ? " input_error" : ""}`}>
               <input
@@ -126,13 +129,13 @@ export const Form = ({
                   onChange: (e) => setSelectedPlan(e.target.value),
                 })}
               />
-              Interest Only
+              {interest}
             </label>
           </div>
         </article>
 
         <button type="submit">
-          <img src={iconCalc} alt="calculator icon" /> Calculate Repayments
+          <img src={iconCalc} alt="calculator icon" /> {calculate}
         </button>
       </form>
     </section>

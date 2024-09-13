@@ -1,0 +1,17 @@
+{
+  "title": "Mortgage Calculator",
+  "clear": "Clear All",
+  "amount": "Mortgage Amount",
+  "term": "Mortgage Term",
+  "rate": "Interest Rate",
+  "type": "Mortgage Type",
+  "repay": "Repayment",
+  "interest": "Interest Only",
+  "calculate": "Calculate Repayments",
+  "emptyTitle": "Results shown here",
+  "emptyDesc": "Complete the form and click “calculate repayments” to see what your monthly repayments would be.",
+  "resTitle": "Your results",
+  "resDesc": "Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again.",
+  "monthTitle": "Your monthly repayments",
+  "total": "Total you'll repay over the term"
+}

@@ -1,8 +1,10 @@
+import data from "../data.json";
 import { IResultProps } from "../types/types";
 import { formatValue } from "../lib/utils";
 import "../css/result.css";
 
 export const Result = ({ result, selectedPlan }: IResultProps) => {
+  const { resTitle, resDesc, monthTitle, total } = data;
   const { amount, term, rate } = result;
 
   // formula
@@ -23,19 +25,15 @@ export const Result = ({ result, selectedPlan }: IResultProps) => {
   return (
     <section className="result_container">
       <article className="summary">
-        <h3>Your results</h3>
-        <p>
-          Your results are shown below based on the information you provided. To
-          adjust the results, edit the form and click “calculate repayments”
-          again.
-        </p>
+        <h3>{resTitle}</h3>
+        <p>{resDesc}</p>
       </article>
 
       <article className="card">
-        <p>Your monthly repayments</p>
+        <p>{monthTitle}</p>
         <h4>{formatValue(monthlyPayment.toFixed(2))}</h4>
         <span></span>
-        <p>Total you'll repay over the term</p>
+        <p>{total}</p>
         <h5>
           {formatValue(
             selectedPlan === "repayment"
