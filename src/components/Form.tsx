@@ -49,7 +49,7 @@ export const Form = ({
         autoComplete="off"
       >
         <article className="amount">
-          <h2>Mortgage Amount</h2>
+          <label htmlFor="amount">Mortgage Amount</label>
           <div className={`amount_input${errors.amount ? " input_error" : ""}`}>
             <p>{currencySymbol}</p>
             <input
@@ -72,7 +72,7 @@ export const Form = ({
 
         <article className="term_rate">
           <div className="term">
-            <h2>Mortgage Term</h2>
+            <label htmlFor="term">Mortgage Term</label>
             <div className={`term_input${errors.term ? " input_error" : ""}`}>
               <input
                 type="text"
@@ -84,7 +84,7 @@ export const Form = ({
             </div>
           </div>
           <div className="rate">
-            <h2>Interest Rate</h2>
+            <label htmlFor="rate">Interest Rate</label>
             <div className={`rate_input${errors.rate ? " input_error" : ""}`}>
               <input
                 type="text"
